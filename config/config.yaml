@@ -1,0 +1,35 @@
+seed: 42
+
+data:
+  dataset_name: "eriktks/conll2003"
+  dataset_revision: "convert/parquet"
+  token_column: "tokens"
+  label_column: "ner_tags"
+  vocab_cutoff: 5
+  label_pad_id: -100
+  use_subset: true
+  train_subset_size: 512
+  valid_subset_size: 128
+  test_subset_size: 128
+  num_workers: 0
+
+model:
+  embedding_size: 64
+  hidden_size: 64
+  dropout: 0.1
+
+training:
+  batch_size: 32
+  num_epochs: 10
+  learning_rate: 0.001
+  grad_clip: 1.0
+  use_cuda: true
+  model_types:
+    - rnn
+    - lstm
+    - gru
+
+output:
+  save_dir: "models/saved_models"
+  plots_dir: "outputs/plots"
+  reports_dir: "outputs/reports"
